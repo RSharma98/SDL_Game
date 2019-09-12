@@ -3,6 +3,8 @@ int frames;
 
 Game::Game() {
 	frames = 0;
+	player = new GameObject();
+	tilemap = new Tilemap();
 }
 
 Game::~Game() {
@@ -21,10 +23,7 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 		isRunning = true;
 	}
 
-	SDL_Rect sourceRect{}, destinationRect{};
-	destinationRect.w = 64;
-	destinationRect.h = 64;
-	playerSprite.Initialise("Assets/Sprites/microFantasy.v0.4/characters/knight_blue/knight_blue_idle_01.png", renderer, sourceRect, destinationRect);
+	player->Initialise("Assets/Sprites/microFantasy.v0.4/characters/knight_blue/knight_blue_idle_01.png", renderer, new Vector2D(100, 50));
 }
 
 void Game::Start() {
@@ -34,6 +33,7 @@ void Game::Start() {
 void Game::Update() {
 	frames++;
 	std::cout << frames << '\n';
+	player->Update();
 }
 
 void Game::HandleEvents() {
@@ -53,7 +53,8 @@ void Game::Render() {
 	SDL_RenderClear(renderer);
 
 	//Add stuff to render here
-	playerSprite.Render(renderer);
+	player->Render(renderer);
+	tilemap->Render(renderer);
 
 	SDL_RenderPresent(renderer);
 }

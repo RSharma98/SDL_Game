@@ -8,7 +8,7 @@ class SpriteRenderer {
 public:
 	SpriteRenderer();
 	void Initialise(const char* path, SDL_Renderer* renderer, SDL_Rect sourceRect, SDL_Rect destinationRect);
-	void Render(SDL_Renderer *renderer); 
+	void Render(SDL_Renderer *renderer, SDL_Rect destRect); 
 
 private:
 	SDL_Texture *sprite;

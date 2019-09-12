@@ -9,7 +9,7 @@ int main(int args, char* argv[]) {
 	int frameTime;
 
 	game = new Game();
-	game->Initialise("Game Name", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+	game->Initialise("Game Name", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, false);
 	while (game->Running()) {
 		frameStart = SDL_GetTicks();
 		game->HandleEvents();

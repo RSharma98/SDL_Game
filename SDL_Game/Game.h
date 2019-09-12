@@ -5,7 +5,8 @@
 #include "SDL_image.h"
 #include <iostream>
 
-#include "SpriteRenderer.h"
+#include "GameObject.h"
+#include "Tilemap.h"
 
 class Game {
 public:
@@ -25,7 +26,8 @@ private:
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 
-	SpriteRenderer playerSprite;
+	GameObject* player;
+	Tilemap* tilemap;
 };
 
 #endif // ! GAME_H
