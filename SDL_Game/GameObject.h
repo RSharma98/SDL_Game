@@ -11,7 +11,7 @@ class GameObject {
 public:
 	GameObject();
 	~GameObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D *pos);
+	void Initialise(SDL_Renderer* renderer, Vector2D *pos, Vector2D *scale);
 	void Update();
 	void Render(SDL_Renderer* renderer);
 
@@ -21,6 +21,7 @@ protected:
 	SpriteRenderer* spriteRenderer;
 	SDL_Rect sourceRect, destRect;
 	Vector2D* pos;
+	Vector2D* scale;
 };
 
 #endif

@@ -8,11 +8,9 @@ LavaObject::~LavaObject() {
 
 }
 
-void LavaObject::Initialise(SDL_Renderer *renderer, Vector2D *pos) {
+void LavaObject::Initialise(SDL_Renderer *renderer, Vector2D *pos, Vector2D* scale) {
 	spritePath = "Assets/Sprites/Dungeon Platformer Tileset/tileset.png";
 	SDL_Rect source{ 80, 144, 16, 16 };
-	SDL_Rect dest{ pos->getX(), pos->getY(), 40, 40 };
 	this->sourceRect = source;
-	this->destRect = dest;
-	GameObject::Initialise(renderer, pos);
+	GameObject::Initialise(renderer, pos, scale);
 }

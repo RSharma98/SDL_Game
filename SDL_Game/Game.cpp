@@ -3,8 +3,6 @@ int frames;
 
 Game::Game() {
 	frames = 0;
-	player = new TileObject();
-	tilemap = new Tilemap();
 }
 
 Game::~Game() {
@@ -23,7 +21,7 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 		isRunning = true;
 	}
 
-	player->Initialise(renderer, new Vector2D(100, 50));
+	tilemap = new Tilemap(renderer);
 }
 
 void Game::Start() {
@@ -33,7 +31,6 @@ void Game::Start() {
 void Game::Update() {
 	frames++;
 	std::cout << frames << '\n';
-	player->Update();
 }
 
 void Game::HandleEvents() {
@@ -49,12 +46,11 @@ void Game::HandleEvents() {
 }
 
 void Game::Render() {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, 50, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
 	//Add stuff to render here
-	player->Render(renderer);
-	tilemap->Render(renderer);
+	tilemap->Render();
 
 	SDL_RenderPresent(renderer);
 }

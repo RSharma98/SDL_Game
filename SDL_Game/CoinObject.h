@@ -8,7 +8,7 @@ class CoinObject : public GameObject
 public:
 	CoinObject();
 	~CoinObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D* pos);
+	void Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* scale);
 };
 
 #endif // !COIN_OBJECT_H

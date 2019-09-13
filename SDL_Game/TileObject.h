@@ -8,7 +8,7 @@ class TileObject : public GameObject
 public:
 	TileObject();
 	~TileObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D* pos);
+	void Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* scale);
 };
 
 #endif // !TILE_OBJECT_H

@@ -8,7 +8,7 @@ class SpikeObject : public GameObject
 public:
 	SpikeObject(int rotation);
 	~SpikeObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D* pos);
+	void Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* scale);
 
 private:
 	int rotation;

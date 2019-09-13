@@ -8,7 +8,7 @@ class LavaObject : public GameObject
 public:
 	LavaObject();
 	~LavaObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D* pos);
+	void Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* scale);
 };
 
 #endif // !LAVA_OBJECT_H

@@ -8,7 +8,7 @@ class BackgroundObject : public GameObject
 public:
 	BackgroundObject();
 	~BackgroundObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D* pos);
+	void Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* scale);
 };
 
 #endif // !BACKGROUND_OBJECT_H
