@@ -1,16 +1,22 @@
 #include "Tilemap.h"
 
-int lvl[10][10] = {
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, };
+int lvl[16][16] = {
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1} };
 
 Tilemap::Tilemap() {
 	backgrounds = new std::vector<SpriteRenderer>();
@@ -22,17 +28,23 @@ Tilemap::~Tilemap() {
 	
 }
 
-void Tilemap::Load(int arr[10][10]) {
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
+void Tilemap::Load(int arr[16][16]) {
+	for (int i = 0; i < 16; i++) {
+		for (int j = 0; j < 16; j++) {
 			level[i][j] = arr[i][j];
 		}
 	}
 }
 
 void Tilemap::Render(SDL_Renderer *renderer) {
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
+
+	//Render a background on all tiles then the other tiles above it.
+	//KEY:
+	//1: TILE
+	//2: LAVA
+	//3: SPIKES
+	for (int i = 0; i < 16; i++) {
+		for (int j = 0; j < 16; j++) {
 			SpriteRenderer *sprite = new SpriteRenderer();
 			switch (level[i][j])
 			{
@@ -41,7 +53,7 @@ void Tilemap::Render(SDL_Renderer *renderer) {
 			case 1:
 				//Tile
 				SDL_Rect sourceRect{8, 0, 8, 8};
-				SDL_Rect destRect{j * 64, i * 64, 64, 64};
+				SDL_Rect destRect{j * 40, i * 40, 40, 40};
 				sprite->Initialise(tilePath, renderer, sourceRect, destRect);
 				sprite->Render(renderer, destRect);
 				break;

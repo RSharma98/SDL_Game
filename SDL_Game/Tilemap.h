@@ -12,13 +12,13 @@ public:
 	Tilemap();
 	~Tilemap();
 	void Render(SDL_Renderer *renderer);
-	void Load(int arr[10][10]);
+	void Load(int arr[16][16]);
 
 private:
 	std::vector<SpriteRenderer>* backgrounds;
 	std::vector<SpriteRenderer>* sprites;
 	const char* tilePath = "Assets/Sprites/microFantasy.v0.4/tilesets/platformer.png";
-	int level[10][10];
+	int level[16][16];
 
 	//TODO: make this class generate the player and enemies
 	bool addedPlayer = false;
