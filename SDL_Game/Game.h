@@ -6,6 +6,8 @@
 #include <iostream>
 
 #include "GameObject.h"
+#include "LavaObject.h"
+#include "TileObject.h"
 #include "Tilemap.h"
 
 class Game {
@@ -26,7 +28,7 @@ private:
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 
-	GameObject* player;
+	TileObject* player;
 	Tilemap* tilemap;
 };
 

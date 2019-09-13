@@ -17,7 +17,7 @@ public:
 private:
 	std::vector<SpriteRenderer>* backgrounds;
 	std::vector<SpriteRenderer>* sprites;
-	const char* tilePath = "Assets/Sprites/microFantasy.v0.4/tilesets/platformer.png";
+	const char* tilePath = "Assets/Sprites/Dungeon Platformer Tileset/tileset.png";
 	int level[16][16];
 
 	//TODO: make this class generate the player and enemies

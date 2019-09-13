@@ -136,17 +136,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundObject.cpp" />
+    <ClCompile Include="CoinObject.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="LavaObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SpikeObject.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Tilemap.cpp" />
+    <ClCompile Include="TileObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundObject.h" />
+    <ClInclude Include="CoinObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="LavaObject.h" />
+    <ClInclude Include="SpikeObject.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Tilemap.h" />
+    <ClInclude Include="TileObject.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

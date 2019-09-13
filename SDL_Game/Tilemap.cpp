@@ -43,6 +43,7 @@ void Tilemap::Render(SDL_Renderer *renderer) {
 	//1: TILE
 	//2: LAVA
 	//3: SPIKES
+	//4: COINS
 	for (int i = 0; i < 16; i++) {
 		for (int j = 0; j < 16; j++) {
 			SpriteRenderer *sprite = new SpriteRenderer();
@@ -52,7 +53,7 @@ void Tilemap::Render(SDL_Renderer *renderer) {
 				break;
 			case 1:
 				//Tile
-				SDL_Rect sourceRect{8, 0, 8, 8};
+				SDL_Rect sourceRect{0, 0, 16, 16};
 				SDL_Rect destRect{j * 40, i * 40, 40, 40};
 				sprite->Initialise(tilePath, renderer, sourceRect, destRect);
 				sprite->Render(renderer, destRect);

@@ -3,7 +3,7 @@ int frames;
 
 Game::Game() {
 	frames = 0;
-	player = new GameObject();
+	player = new TileObject();
 	tilemap = new Tilemap();
 }
 
@@ -23,7 +23,7 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 		isRunning = true;
 	}
 
-	player->Initialise("Assets/Sprites/microFantasy.v0.4/characters/knight_blue/knight_blue_idle_01.png", renderer, new Vector2D(100, 50));
+	player->Initialise(renderer, new Vector2D(100, 50));
 }
 
 void Game::Start() {
