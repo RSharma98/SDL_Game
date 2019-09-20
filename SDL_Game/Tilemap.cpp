@@ -1,23 +1,16 @@
 #include "Tilemap.h"
 
-int lvl[16][16] = {
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
-	{1, 8, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 1, 1, 1},
-	{1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} };
-
+int lvl[10][10] = {
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 8, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0} };
 Tilemap::Tilemap(SDL_Renderer *renderer) {
 	this->renderer = renderer;
 	Load(lvl);
@@ -27,24 +20,36 @@ Tilemap::~Tilemap() {
 	
 }
 
-void Tilemap::Load(int arr[16][16]) {
-	for (int i = 0; i < 16; i++) {
-		for (int j = 0; j < 16; j++) {
+void Tilemap::Load(int arr[10][10]) {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
 			level[i][j] = arr[i][j];
-			float posX = j * 40;
-			float posY = i * 40;
-			float scale = 40;
-			BackgroundObject* background = new BackgroundObject();
-			background->Initialise(renderer, posX, posY, scale, scale);
-			backgrounds.push_back(background);
+			float posX = j * 64;
+			float posY = i * 64;
+			float scale = 64;
 
-			switch (arr[i][j])
-			{
-			case 1: {
+			if (arr[i][j] != 0) {
 				TileObject* tile = new TileObject();
-				tile->Initialise(renderer, posX, posY, scale, scale);
-				tiles.push_back(tile); }
-				break;
+				TileObject::TileType tileType;
+				//TODO: Add code to TileObject to determine type of tile (i.e top/bottom/left/right wall or regular tile
+				if ((i > 0 && arr[i - 1][j] == 0)) {
+					if (arr[i][j + 1] == 0) tileType = TileObject::TileType::TopRight;
+					else if (arr[i][j - 1] == 0) tileType = TileObject::TileType::TopLeft;
+					else tileType = TileObject::TileType::Top;
+				}
+				else if ((i < 9 && arr[i + 1][j] == 0)) {
+					if (arr[i][j + 1] == 0) tileType = TileObject::TileType::BottomRight;
+					else if (arr[i][j - 1] == 0) tileType = TileObject::TileType::BottomLeft;
+					else tileType = TileObject::TileType::Bottom;
+				}
+				else if (j > 0 && arr[i][j - 1] == 0) tileType = TileObject::TileType::Left;
+				else if (j < 9 && arr[i][j + 1] == 0) tileType = TileObject::TileType::Right;
+				else tileType = TileObject::TileType::Normal;
+				tile->Initialise(renderer, posX, posY, scale, scale, tileType);
+				tiles.push_back(tile);
+			}
+
+			switch (arr[i][j]) {
 			case 2: {
 				LavaObject* lava = new LavaObject();
 				lava->Initialise(renderer, posX, posY, scale, scale);

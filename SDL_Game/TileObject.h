@@ -8,7 +8,8 @@ class TileObject : public GameObject
 public:
 	TileObject();
 	~TileObject();
-	void Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY);
+	enum TileType { Normal, TopLeft, TopRight, BottomLeft, BottomRight, Top, Bottom, Left, Right };
+	void Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY, TileType tileType);
 };
 
 #endif // !TILE_OBJECT_H

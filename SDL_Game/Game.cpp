@@ -70,7 +70,7 @@ void Game::HandleEvents() {
 }
 
 void Game::Render() {
-	SDL_SetRenderDrawColor(renderer, 50, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, 36, 19, 25, 255);
 	SDL_RenderClear(renderer);
 
 	//Add stuff to render here

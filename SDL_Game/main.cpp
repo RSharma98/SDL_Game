@@ -9,7 +9,7 @@ int main(int args, char* argv[]) {
 	int frameTime;
 
 	game = new Game();
-	game->Initialise("SDL Platformer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, false);
+	game->Initialise("SDL Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, false);
 	while (game->Running()) {
 		frameStart = SDL_GetTicks();
 		game->HandleEvents();

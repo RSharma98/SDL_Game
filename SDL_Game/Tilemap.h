@@ -20,7 +20,7 @@ public:
 	Tilemap(SDL_Renderer* renderer);
 	~Tilemap();
 	void Render();
-	void Load(int arr[16][16]);
+	void Load(int arr[10][10]);
 	void Update();
 	PlayerObject* GetPlayer() {
 		return player;

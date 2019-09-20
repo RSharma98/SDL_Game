@@ -15,7 +15,7 @@ public:
 
 private:
 	int moveDir;
-	const int moveSpeed = 4;
+	const int moveSpeed = 64;
 	const int jumpHeight = 10;
 	const int gravity = 10;
 };
