@@ -12,6 +12,7 @@
 #include "CoinObject.h"
 #include "SpikeObject.h"
 #include "BackgroundObject.h"
+#include "PlayerObject.h"
 
 class Tilemap
 {
@@ -20,6 +21,10 @@ public:
 	~Tilemap();
 	void Render();
 	void Load(int arr[16][16]);
+	void Update();
+	PlayerObject* GetPlayer() {
+		return player;
+	}
 
 private:
 	std::vector<BackgroundObject*> backgrounds;
@@ -27,6 +32,7 @@ private:
 	std::vector<CoinObject*> coins;
 	std::vector<LavaObject*> lavas;
 	std::vector<SpikeObject*> spikes;
+	PlayerObject* player;
 	int level[16][16];
 
 	SDL_Renderer* renderer;

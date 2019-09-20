@@ -3,7 +3,6 @@
 
 #include "SDL.h"
 #include "SpriteRenderer.h"
-#include "Vector2D.h"
 #include <time.h>
 #include <cstdlib>
 
@@ -11,7 +10,7 @@ class GameObject {
 public:
 	GameObject();
 	~GameObject();
-	void Initialise(SDL_Renderer* renderer, Vector2D *pos, Vector2D *scale);
+	void Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY);
 	void Update();
 	void Render(SDL_Renderer* renderer);
 
@@ -20,8 +19,8 @@ protected:
 	const char* spritePath;
 	SpriteRenderer* spriteRenderer;
 	SDL_Rect sourceRect, destRect;
-	Vector2D* pos;
-	Vector2D* scale;
+	float posX, posY;
+	float scaleX, scaleY;
 };
 
 #endif

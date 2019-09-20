@@ -142,6 +142,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="LavaObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="SpikeObject.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Tilemap.cpp" />
@@ -153,11 +154,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LavaObject.h" />
+    <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="SpikeObject.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="TileObject.h" />
-    <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

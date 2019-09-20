@@ -8,7 +8,7 @@ SpikeObject::~SpikeObject() {
 
 }
 
-void SpikeObject::Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* scale) {
+void SpikeObject::Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY) {
 	spritePath = "Assets/Sprites/Dungeon Platformer Tileset/tileset.png";
 	switch (rotation) {
 	case 0:
@@ -27,5 +27,5 @@ void SpikeObject::Initialise(SDL_Renderer* renderer, Vector2D* pos, Vector2D* sc
 		sourceRect = SDL_Rect{ 32, 96, 16, 16 };
 		break;
 	}
-	GameObject::Initialise(renderer, pos, scale);
+	GameObject::Initialise(renderer, posX, posY, scaleX, scaleY);
 }

@@ -1,30 +1,33 @@
 #include "GameObject.h"
+#include <iostream>
 
 GameObject::GameObject() {
-	
+	destRect = sourceRect = SDL_Rect{ 0, 0, 0, 0 };
 }
 
 GameObject::~GameObject() {
 
 }
 
-void GameObject::Initialise(SDL_Renderer *renderer, Vector2D *pos, Vector2D *scale) {
+void GameObject::Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY) {
 	spriteRenderer = new SpriteRenderer();
-	this->pos = pos;
-	this->scale = scale;
+	this->posX = posX;
+	this->posY = posY;
+	this->scaleX = scaleX;
+	this->scaleY = scaleY;
 
-	destRect.x = pos->getX();
-	destRect.y = pos->getY();
-	destRect.w = scale->getX();
-	destRect.h = scale->getY();
+	destRect.x = posX;
+	destRect.y = posY;
+	destRect.w = scaleX;
+	destRect.h = scaleY;
 	spriteRenderer->Initialise(spritePath, renderer, sourceRect, destRect);
 }
 
 void GameObject::Update() {
-	destRect.x = pos->getX();
-	destRect.y = pos->getY();
-	destRect.w = scale->getX();
-	destRect.h = scale->getY();
+	destRect.x = posX;
+	destRect.y = posY;
+	destRect.w = scaleX;
+	destRect.h = scaleY;
 	//Todo, update sprite renderer values based on object's transform
 }
 

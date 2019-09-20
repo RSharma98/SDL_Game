@@ -31,12 +31,36 @@ void Game::Start() {
 void Game::Update() {
 	frames++;
 	std::cout << frames << '\n';
+	tilemap->Update();
 }
 
 void Game::HandleEvents() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
+	
+	tilemap->GetPlayer()->SetDir(0);
 	switch (event.type) {
+		case SDL_KEYDOWN:
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_d:
+				tilemap->GetPlayer()->SetDir(1);
+				std::cout << "D KEY PRESSED\n";
+				break;
+			case SDLK_a:
+				tilemap->GetPlayer()->SetDir(-1);
+				std::cout << "A KEY PRESSED\n";
+				break;
+			case SDLK_SPACE:
+				std::cout << "JUMP\n";
+				break;
+			case SDLK_ESCAPE:
+				isRunning = false;
+				break;
+			default:
+				break;
+			}
+			break;
 		case SDL_QUIT:
 			isRunning = false;
 			break;
