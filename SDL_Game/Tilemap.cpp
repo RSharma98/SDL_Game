@@ -83,6 +83,7 @@ void Tilemap::Load(int arr[10][10]) {
 			case 8:
 				player = new PlayerObject();
 				player->Initialise(renderer, posX, posY, scale, scale);
+				break;
 			default:
 				break;
 			}
@@ -91,7 +92,7 @@ void Tilemap::Load(int arr[10][10]) {
 }
 
 void Tilemap::Update() {
-	if (player != nullptr) player->Update();
+	//TODO: Update enemies here
 }
 
 void Tilemap::Render() {

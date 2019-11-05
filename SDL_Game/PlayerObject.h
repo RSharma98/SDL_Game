@@ -10,14 +10,11 @@ public:
 	PlayerObject();
 	~PlayerObject();
 	void Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY);
-	void Update();
-	void SetDir(int dir) { moveDir = dir; }
+	void MoveHorizontal(int dir);
+	void MoveVertical(int dir);
 
 private:
-	int moveDir;
 	const int moveSpeed = 64;
-	const int jumpHeight = 10;
-	const int gravity = 10;
 };
 
 #endif // !PLAYER_OBJECT_H

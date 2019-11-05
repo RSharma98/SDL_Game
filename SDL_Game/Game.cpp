@@ -38,21 +38,25 @@ void Game::HandleEvents() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
 	
-	tilemap->GetPlayer()->SetDir(0);
 	switch (event.type) {
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym)
 			{
 			case SDLK_d:
-				tilemap->GetPlayer()->SetDir(1);
-				std::cout << "D KEY PRESSED\n";
+			case SDLK_RIGHT:
+				tilemap->GetPlayer()->MoveHorizontal(1);
 				break;
 			case SDLK_a:
-				tilemap->GetPlayer()->SetDir(-1);
-				std::cout << "A KEY PRESSED\n";
+			case SDLK_LEFT:
+				tilemap->GetPlayer()->MoveHorizontal(-1);
 				break;
-			case SDLK_SPACE:
-				std::cout << "JUMP\n";
+			case SDLK_w:
+			case SDLK_UP:
+				tilemap->GetPlayer()->MoveVertical(1);
+				break;
+			case SDLK_s:
+			case SDLK_DOWN:
+				tilemap->GetPlayer()->MoveVertical(-1);
 				break;
 			case SDLK_ESCAPE:
 				isRunning = false;
