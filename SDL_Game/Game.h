@@ -16,7 +16,6 @@ public:
 	~Game();
 
 	void Initialise(const char *title, int xPos, int yPos, int width, int height, bool fullscreen);
-	void Start();
 	void Update();
 	void HandleEvents();
 	void Render();
@@ -24,7 +23,7 @@ public:
 	bool Running() { return isRunning; }
 
 private:
-	bool isRunning;
+	bool isRunning = false;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 

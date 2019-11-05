@@ -1,5 +1,6 @@
 #include "SpikeObject.h"
 
+//Initialise a spike with a certain rotation angle
 SpikeObject::SpikeObject(int rotation) {
 	this->rotation = rotation;
 }
@@ -8,6 +9,7 @@ SpikeObject::~SpikeObject() {
 
 }
 
+//Initialise the spike based on the angle
 void SpikeObject::Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY) {
 	spritePath = "Assets/Sprites/Dungeon Platformer Tileset/tileset.png";
 	switch (rotation) {

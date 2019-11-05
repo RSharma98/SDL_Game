@@ -9,6 +9,7 @@ GameObject::~GameObject() {
 
 }
 
+//This function intialises the object by rendering a sprite based on the specified values
 void GameObject::Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY) {
 	spriteRenderer = new SpriteRenderer();
 	this->posX = posX;
@@ -23,6 +24,7 @@ void GameObject::Initialise(SDL_Renderer* renderer, float posX, float posY, floa
 	spriteRenderer->Initialise(spritePath, renderer, sourceRect, destRect);
 }
 
+//Update moves the sprite as needed
 void GameObject::Update() {
 	destRect.x = posX;
 	destRect.y = posY;
@@ -31,11 +33,12 @@ void GameObject::Update() {
 	//Todo, update sprite renderer values based on object's transform
 }
 
+//This function renders the sprite (obviously)
 void GameObject::Render(SDL_Renderer *renderer) {
 	spriteRenderer->Render(renderer, destRect);
 }
 
-
+//This function generates a random number between zero and max
 int GameObject::Random(int max){
 	static bool first = true;
 	if (first)

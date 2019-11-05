@@ -2,6 +2,7 @@
 
 SpriteRenderer::SpriteRenderer() {}
 
+//Initialise a sprite rendererer so an image can be loaded based on the image path and specified rects
 void SpriteRenderer::Initialise(const char* path, SDL_Renderer *renderer, SDL_Rect sourceRect, SDL_Rect destinationRect) {
 	SDL_Surface* surface = IMG_Load(path);
 	sprite = SDL_CreateTextureFromSurface(renderer, surface);
@@ -10,6 +11,7 @@ void SpriteRenderer::Initialise(const char* path, SDL_Renderer *renderer, SDL_Re
 	this->destinationRect = destinationRect;
 }
 
+//Render the sprite
 void SpriteRenderer::Render(SDL_Renderer *renderer, SDL_Rect destRect) {
 	SDL_RenderCopy(renderer, sprite, &sourceRect, &destRect);
 }

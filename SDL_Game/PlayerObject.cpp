@@ -14,6 +14,7 @@ void PlayerObject::Initialise(SDL_Renderer* renderer, float posX, float posY, fl
 	GameObject::Initialise(renderer, posX, posY, scaleX, scaleY);
 }
 
+//The following functions move the player vertically or horizontally
 void PlayerObject::MoveVertical(int dir) {
 	posY -= moveSpeed * dir;
 	GameObject::Update();

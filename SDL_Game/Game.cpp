@@ -24,16 +24,13 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 	tilemap = new Tilemap(renderer);
 }
 
-void Game::Start() {
-
-}
-
 void Game::Update() {
 	frames++;
 	std::cout << frames << '\n';
 	tilemap->Update();
 }
 
+//This function handles keyboard movement (moving the player and quitting)
 void Game::HandleEvents() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
@@ -74,15 +71,16 @@ void Game::HandleEvents() {
 }
 
 void Game::Render() {
-	SDL_SetRenderDrawColor(renderer, 36, 19, 25, 255);
-	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 36, 19, 25, 255);	//Set the background colour
+	SDL_RenderClear(renderer);							//Clear the render view
 
 	//Add stuff to render here
 	tilemap->Render();
 
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(renderer);						//Render the frame
 }
 
+//This function is called when the game exits
 void Game::Clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
