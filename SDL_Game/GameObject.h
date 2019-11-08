@@ -13,6 +13,8 @@ public:
 	void Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY);
 	void Update();
 	void Render(SDL_Renderer* renderer);
+	float GetPosX() { return posX; }
+	float GetPosY() { return posY; }
 
 protected:
 	int Random(int max);

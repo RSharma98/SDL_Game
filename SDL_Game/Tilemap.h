@@ -22,6 +22,8 @@ public:
 	void Render();
 	void Load(int arr[10][10]);
 	void Update();
+	void MovePlayerVertical(int dir);
+	void MovePlayerHorizontal(int dir);
 	PlayerObject* GetPlayer() {
 		return player;
 	}
@@ -34,8 +36,12 @@ private:
 	std::vector<SpikeObject*> spikes;
 	PlayerObject* player;
 	int level[16][16];
+	float scale;
 
 	SDL_Renderer* renderer;
+
+	struct Bounds { float left, right, top, bottom; };
+	Bounds bounds;
 
 	//TODO: make this class generate the player and enemies
 	bool addedPlayer = false;

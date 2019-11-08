@@ -41,19 +41,19 @@ void Game::HandleEvents() {
 			{
 			case SDLK_d:
 			case SDLK_RIGHT:
-				tilemap->GetPlayer()->MoveHorizontal(1);
+				tilemap->MovePlayerHorizontal(1);
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
-				tilemap->GetPlayer()->MoveHorizontal(-1);
+				tilemap->MovePlayerHorizontal(-1);
 				break;
 			case SDLK_w:
 			case SDLK_UP:
-				tilemap->GetPlayer()->MoveVertical(1);
+				tilemap->MovePlayerVertical(1);
 				break;
 			case SDLK_s:
 			case SDLK_DOWN:
-				tilemap->GetPlayer()->MoveVertical(-1);
+				tilemap->MovePlayerVertical(-1);
 				break;
 			case SDLK_ESCAPE:
 				isRunning = false;

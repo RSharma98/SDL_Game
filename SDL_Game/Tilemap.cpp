@@ -11,7 +11,9 @@ int lvl[10][10] = {
 	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0} };
+
 Tilemap::Tilemap(SDL_Renderer *renderer) {
+	scale = 0;
 	this->renderer = renderer;
 	Load(lvl);
 }
@@ -26,7 +28,7 @@ void Tilemap::Load(int arr[10][10]) {
 			level[i][j] = arr[i][j];
 			float posX = j * 64;
 			float posY = i * 64;
-			float scale = 64;
+			scale = 64;
 
 			if (arr[i][j] != 0) {
 				TileObject* tile = new TileObject();
@@ -35,15 +37,27 @@ void Tilemap::Load(int arr[10][10]) {
 				if ((i > 0 && arr[i - 1][j] == 0)) {
 					if (arr[i][j + 1] == 0) tileType = TileObject::TileType::TopRight;
 					else if (arr[i][j - 1] == 0) tileType = TileObject::TileType::TopLeft;
-					else tileType = TileObject::TileType::Top;
+					else {
+						tileType = TileObject::TileType::Top;
+						bounds.top = (i + 1) * scale;
+					} 
 				}
 				else if ((i < 9 && arr[i + 1][j] == 0)) {
 					if (arr[i][j + 1] == 0) tileType = TileObject::TileType::BottomRight;
 					else if (arr[i][j - 1] == 0) tileType = TileObject::TileType::BottomLeft;
-					else tileType = TileObject::TileType::Bottom;
+					else {
+						tileType = TileObject::TileType::Bottom;
+						bounds.bottom = (i - 1) * scale;
+					} 
 				}
-				else if (j > 0 && arr[i][j - 1] == 0) tileType = TileObject::TileType::Left;
-				else if (j < 9 && arr[i][j + 1] == 0) tileType = TileObject::TileType::Right;
+				else if (j > 0 && arr[i][j - 1] == 0) {
+					tileType = TileObject::TileType::Left;
+					bounds.left = (j + 1) * scale;
+				}
+				else if (j < 9 && arr[i][j + 1] == 0) {
+					tileType = TileObject::TileType::Right;
+					bounds.right = (j - 1) * scale;
+				} 
 				else tileType = TileObject::TileType::Normal;
 				tile->Initialise(renderer, posX, posY, scale, scale, tileType);
 				tiles.push_back(tile);
@@ -93,6 +107,19 @@ void Tilemap::Load(int arr[10][10]) {
 
 void Tilemap::Update() {
 	//TODO: Update enemies here
+}
+
+//These two functions only move the player if there is not a wall ahead in the direction they are moving
+void Tilemap::MovePlayerHorizontal(int dir) {
+	if ((player->GetPosX() <= bounds.right - scale && dir == 1) || (player->GetPosX() >= bounds.left + scale && dir == -1)) {
+		player->MoveHorizontal(dir);
+	}
+}
+
+void Tilemap::MovePlayerVertical(int dir) {
+	if ((player->GetPosY() >= bounds.top + scale && dir == 1) || (player->GetPosY() <= bounds.bottom - scale && dir == -1)) {
+		player->MoveVertical(dir);
+	}
 }
 
 void Tilemap::Render() {
