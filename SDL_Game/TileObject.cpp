@@ -13,7 +13,7 @@ TileObject::~TileObject() {
 //This works by pushing all the possible source rectangles to a vector and picking one at random.
 //The type of tile determines if it is a regular tile the player can walk on or if it's a wall tile
 void TileObject::Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY, TileType tileType) {
-	spritePath = "C:/Users/Rahul/Documents/Projects/SDL_Game/SDL_Game/Assets/Sprites/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png";
+	spritePath = "Assets/Sprites/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png";
 	std::vector<SDL_Rect> sourceRects;
 	switch (tileType)
 	{

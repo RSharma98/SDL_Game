@@ -74,8 +74,8 @@
     <LibraryPath>C:\Users\Rahul\Documents\_Libraries\SDL2\lib\x64;C:\Users\Rahul\Documents\_Libraries\SDL2_Image\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Rahul\Documents\_Libraries\SDL2_Image\include;C:\Users\Rahul\Documents\_Libraries\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Rahul\Documents\_Libraries\SDL2\lib\x64;C:\Users\Rahul\Documents\_Libraries\SDL2_Image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)_Libraries\SDL2_Image\include;$(SolutionDir)_Libraries\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)_Libraries\SDL2\lib\x64;$(SolutionDir)_Libraries\SDL2_Image\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,11 +97,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Rahul\Documents\_Libraries\SDL2_Image\include;C:\Users\Rahul\Documents\_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)_Libraries\SDL2_Image\include;$(SolutionDir)_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\Rahul\Documents\_Libraries\SDL2_Image\lib\x64;C:\Users\Rahul\Documents\_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)_Libraries\SDL2_Image\lib\x64;$(SolutionDir)_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -147,6 +147,7 @@
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="TileObject.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundObject.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="TileObject.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

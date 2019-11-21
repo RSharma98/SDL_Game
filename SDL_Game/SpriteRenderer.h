@@ -9,6 +9,7 @@ public:
 	SpriteRenderer();
 	void Initialise(const char* path, SDL_Renderer* renderer, SDL_Rect sourceRect, SDL_Rect destinationRect);
 	void Render(SDL_Renderer *renderer, SDL_Rect destRect); 
+	bool renderSprite;
 
 private:
 	SDL_Texture *sprite;

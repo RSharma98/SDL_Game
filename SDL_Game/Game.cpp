@@ -55,6 +55,9 @@ void Game::HandleEvents() {
 			case SDLK_DOWN:
 				tilemap->MovePlayerVertical(-1);
 				break;
+			case SDLK_SPACE:
+				tilemap->HideObstacles();
+				break;
 			case SDLK_ESCAPE:
 				isRunning = false;
 				break;

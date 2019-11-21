@@ -9,9 +9,10 @@ void SpriteRenderer::Initialise(const char* path, SDL_Renderer *renderer, SDL_Re
 	SDL_FreeSurface(surface);
 	this->sourceRect = sourceRect;
 	this->destinationRect = destinationRect;
+	renderSprite = true;
 }
 
 //Render the sprite
 void SpriteRenderer::Render(SDL_Renderer *renderer, SDL_Rect destRect) {
-	SDL_RenderCopy(renderer, sprite, &sourceRect, &destRect);
+	if(renderSprite) SDL_RenderCopy(renderer, sprite, &sourceRect, &destRect);
 }

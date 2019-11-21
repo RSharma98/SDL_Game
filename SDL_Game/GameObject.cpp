@@ -38,6 +38,14 @@ void GameObject::Render(SDL_Renderer *renderer) {
 	spriteRenderer->Render(renderer, destRect);
 }
 
+void GameObject::Hide() {
+	spriteRenderer->renderSprite = false;
+}
+
+void GameObject::MakeVisible() {
+	spriteRenderer->renderSprite = true;
+}
+
 //This function generates a random number between zero and max
 int GameObject::Random(int max){
 	static bool first = true;

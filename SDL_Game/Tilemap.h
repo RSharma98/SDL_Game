@@ -13,6 +13,7 @@
 #include "SpikeObject.h"
 #include "BackgroundObject.h"
 #include "PlayerObject.h"
+#include "Time.h"
 
 class Tilemap
 {
@@ -22,6 +23,7 @@ public:
 	void Render();
 	void Load(int arr[10][10]);
 	void Update();
+	void HideObstacles();
 	void MovePlayerVertical(int dir);
 	void MovePlayerHorizontal(int dir);
 	PlayerObject* GetPlayer() {
@@ -37,6 +39,7 @@ private:
 	PlayerObject* player;
 	int level[16][16];
 	float scale;
+	float timeElapsed;
 
 	SDL_Renderer* renderer;
 

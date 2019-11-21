@@ -7,7 +7,7 @@ int lvl[10][10] = {
 	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{0, 1, 8, 1, 1, 1, 1, 1, 1, 0},
-	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+	{0, 1, 1, 1, 1, 2, 2, 1, 1, 0},
 	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0} };
@@ -103,10 +103,28 @@ void Tilemap::Load(int arr[10][10]) {
 			}
 		}
 	}
+	timeElapsed = 0;
 }
 
 void Tilemap::Update() {
-	//TODO: Update enemies here
+	if (timeElapsed >= 3.0) {
+		HideObstacles();
+	} else {
+		timeElapsed += Time::GetDeltaTime();
+	}
+
+	//If the player steps on an obstacle, enable the sprite (this will be changed to cause damage later)
+	for (int i = 0; i < spikes.size(); i++) {
+		if (player->GetPosX() == spikes[i]->GetPosX() && player->GetPosY() == spikes[i]->GetPosY()) {
+			spikes[i]->MakeVisible();
+		}
+	}
+
+	for (int i = 0; i < lavas.size(); i++) {
+		if (player->GetPosX() == lavas[i]->GetPosX() && player->GetPosY() == lavas[i]->GetPosY()) {
+			lavas[i]->MakeVisible();
+		}
+	}
 }
 
 //These two functions only move the player if there is not a wall ahead in the direction they are moving
@@ -144,4 +162,14 @@ void Tilemap::Render() {
 	}
 
 	player->Render(renderer);
+}
+
+void Tilemap::HideObstacles() {
+	for (int i = 0; i < spikes.size(); i++) {
+		spikes[i]->Hide();
+	}
+
+	for (int i = 0; i < lavas.size(); i++) {
+		lavas[i]->Hide();
+	}
 }
