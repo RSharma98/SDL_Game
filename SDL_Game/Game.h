@@ -9,6 +9,7 @@
 #include "LavaObject.h"
 #include "TileObject.h"
 #include "Tilemap.h"
+#include "Level.h"
 
 class Game {
 public:
@@ -27,6 +28,7 @@ private:
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 
+	Level* level;
 	Tilemap* tilemap;
 };
 

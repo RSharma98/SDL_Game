@@ -15,7 +15,7 @@ int lvl[10][10] = {
 Tilemap::Tilemap(SDL_Renderer *renderer) {
 	scale = 0;
 	this->renderer = renderer;
-	Load(lvl);
+	//Load(lvl);
 }
 
 Tilemap::~Tilemap() {

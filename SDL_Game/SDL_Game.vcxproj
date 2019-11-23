@@ -141,6 +141,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="LavaObject.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="SpikeObject.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LavaObject.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="SpikeObject.h" />
     <ClInclude Include="SpriteRenderer.h" />

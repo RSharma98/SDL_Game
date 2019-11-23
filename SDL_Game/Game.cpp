@@ -21,13 +21,15 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 		isRunning = true;
 	}
 
-	tilemap = new Tilemap(renderer);
+	//tilemap = new Tilemap(renderer);
+	level = new Level(renderer);
 }
 
 void Game::Update() {
 	frames++;
 	std::cout << frames << '\n';
-	tilemap->Update();
+	//tilemap->Update();
+	level->Update();
 }
 
 //This function handles keyboard movement (moving the player and quitting)
@@ -41,22 +43,19 @@ void Game::HandleEvents() {
 			{
 			case SDLK_d:
 			case SDLK_RIGHT:
-				tilemap->MovePlayerHorizontal(1);
+				level->GetTilemap()->MovePlayerHorizontal(1);
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
-				tilemap->MovePlayerHorizontal(-1);
+				level->GetTilemap()->MovePlayerHorizontal(-1);
 				break;
 			case SDLK_w:
 			case SDLK_UP:
-				tilemap->MovePlayerVertical(1);
+				level->GetTilemap()->MovePlayerVertical(1);
 				break;
 			case SDLK_s:
 			case SDLK_DOWN:
-				tilemap->MovePlayerVertical(-1);
-				break;
-			case SDLK_SPACE:
-				tilemap->HideObstacles();
+				level->GetTilemap()->MovePlayerVertical(-1);
 				break;
 			case SDLK_ESCAPE:
 				isRunning = false;
@@ -78,7 +77,8 @@ void Game::Render() {
 	SDL_RenderClear(renderer);							//Clear the render view
 
 	//Add stuff to render here
-	tilemap->Render();
+	//tilemap->Render();
+	level->Render();
 
 	SDL_RenderPresent(renderer);						//Render the frame
 }
