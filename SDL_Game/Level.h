@@ -5,15 +5,15 @@
 
 class Level {
 public:
-	Level(SDL_Renderer *renderer);
+	Level(SDL_Renderer *renderer, int levelNumber);
 	~Level();
 	void Update();
 	void Render();
+	void Load(int levelNumber);
 	Tilemap* GetTilemap() { return tilemap; }
 
-private:
+protected:
 	Tilemap* tilemap;
 	SDL_Renderer* renderer;
-	static int levelArr[10][10];
 };
 #endif // !LEVEL_H

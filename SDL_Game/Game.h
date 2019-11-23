@@ -10,6 +10,7 @@
 #include "TileObject.h"
 #include "Tilemap.h"
 #include "Level.h"
+#include "LevelManager.h"
 
 class Game {
 public:
@@ -30,6 +31,7 @@ private:
 
 	Level* level;
 	Tilemap* tilemap;
+	LevelManager* levelManager;
 };
 
 #endif // ! GAME_H

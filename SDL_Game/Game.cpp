@@ -22,14 +22,16 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 	}
 
 	//tilemap = new Tilemap(renderer);
-	level = new Level(renderer);
+	//level = new Level(renderer);
+	levelManager = new LevelManager(renderer);
 }
 
 void Game::Update() {
 	frames++;
 	std::cout << frames << '\n';
 	//tilemap->Update();
-	level->Update();
+	//level->Update();
+	levelManager->Update();
 }
 
 //This function handles keyboard movement (moving the player and quitting)
@@ -43,19 +45,25 @@ void Game::HandleEvents() {
 			{
 			case SDLK_d:
 			case SDLK_RIGHT:
-				level->GetTilemap()->MovePlayerHorizontal(1);
+				levelManager->GetCurrentTilemap()->MovePlayerHorizontal(1);
 				break;
 			case SDLK_a:
 			case SDLK_LEFT:
-				level->GetTilemap()->MovePlayerHorizontal(-1);
+				levelManager->GetCurrentTilemap()->MovePlayerHorizontal(-1);
 				break;
 			case SDLK_w:
 			case SDLK_UP:
-				level->GetTilemap()->MovePlayerVertical(1);
+				levelManager->GetCurrentTilemap()->MovePlayerVertical(1);
 				break;
 			case SDLK_s:
 			case SDLK_DOWN:
-				level->GetTilemap()->MovePlayerVertical(-1);
+				levelManager->GetCurrentTilemap()->MovePlayerVertical(-1);
+				break;
+			case SDLK_r:
+				levelManager->ResetLevel();
+				break;
+			case SDLK_RETURN:
+				levelManager->IncrementLevel();
 				break;
 			case SDLK_ESCAPE:
 				isRunning = false;
@@ -78,7 +86,8 @@ void Game::Render() {
 
 	//Add stuff to render here
 	//tilemap->Render();
-	level->Render();
+	//level->Render();
+	levelManager->Render();
 
 	SDL_RenderPresent(renderer);						//Render the frame
 }
