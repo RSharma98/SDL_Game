@@ -28,7 +28,6 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 
 void Game::Update() {
 	frames++;
-	std::cout << frames << '\n';
 	//tilemap->Update();
 	//level->Update();
 	levelManager->Update();

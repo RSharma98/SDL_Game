@@ -24,7 +24,6 @@ int main(int args, char* argv[]) {
 		//Calculate delta time and output the total time elapsed
 		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 		Time::SetDeltaTime(deltaTime);
-		std::cout << Time::GetTotalTime() << '\n';
 	}
 	//Clean the game if it's not running
 	game->Clean();

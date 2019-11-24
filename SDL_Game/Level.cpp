@@ -55,17 +55,21 @@ void Level::Render() {
 
 void Level::Load(int levelNumber) {
 	switch (levelNumber) {
-		case 0:
-			tilemap->Load(levelArr1);
-			break;
-		case 1:
-			tilemap->Load(levelArr2);
-			break;
-		case 2:
-			tilemap->Load(levelArr3);
-			break;
-		default:
-			tilemap->Load(levelArr1);
-			break;
-		}
+	case 0:
+		tilemap->Load(levelArr1);
+		break;
+	case 1:
+		tilemap->Load(levelArr2);
+		break;
+	case 2:
+		tilemap->Load(levelArr3);
+		break;
+	default:
+		tilemap->Load(levelArr1);
+		break;
+	}
+}
+
+void Level::Reset() {
+	tilemap->Reset();
 }

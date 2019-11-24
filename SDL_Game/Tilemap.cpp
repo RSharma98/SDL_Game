@@ -94,9 +94,11 @@ void Tilemap::Load(int arr[10][10]) {
 				coin->Initialise(renderer, posX, posY, scale, scale);
 				coins.push_back(coin); }
 				break;
-			case 8:
+			case 8: {
 				player = new PlayerObject();
 				player->Initialise(renderer, posX, posY, scale, scale);
+				playerPosX = posX;
+				playerPosY = posY; }
 				break;
 			default:
 				break;
@@ -172,4 +174,20 @@ void Tilemap::HideObstacles() {
 	for (int i = 0; i < lavas.size(); i++) {
 		lavas[i]->Hide();
 	}
+}
+
+void Tilemap::Reset() {
+	timeElapsed = 0;
+
+	for (int i = 0; i < spikes.size(); i++) {
+		spikes[i]->MakeVisible();
+	}
+
+	for (int i = 0; i < lavas.size(); i++) {
+		lavas[i]->MakeVisible();
+	}
+
+	player->SetPosX(playerPosX);
+	player->SetPosY(playerPosY);
+	player->Update();
 }

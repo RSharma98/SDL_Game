@@ -23,6 +23,7 @@ public:
 	void Render();
 	void Load(int arr[10][10]);
 	void Update();
+	void Reset();
 	void HideObstacles();
 	void MovePlayerVertical(int dir);
 	void MovePlayerHorizontal(int dir);
@@ -37,6 +38,8 @@ private:
 	std::vector<LavaObject*> lavas;
 	std::vector<SpikeObject*> spikes;
 	PlayerObject* player;
+	int playerPosX, playerPosY;
+
 	int level[16][16];
 	float scale;
 	float timeElapsed;

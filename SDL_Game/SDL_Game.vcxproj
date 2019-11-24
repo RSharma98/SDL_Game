@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BackgroundObject.cpp" />
+    <ClCompile Include="BlackOverlayObject.cpp" />
     <ClCompile Include="CoinObject.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -153,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundObject.h" />
+    <ClInclude Include="BlackOverlayObject.h" />
     <ClInclude Include="CoinObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />

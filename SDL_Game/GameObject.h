@@ -17,6 +17,8 @@ public:
 	void MakeVisible();
 	float GetPosX() { return posX; }
 	float GetPosY() { return posY; }
+	void SetPosX(int x) { posX = x; }
+	void SetPosY(int y) { posY = y; }
 
 protected:
 	int Random(int max);

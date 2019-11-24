@@ -10,6 +10,7 @@ public:
 	void Update();
 	void Render();
 	void Load(int levelNumber);
+	void Reset();
 	Tilemap* GetTilemap() { return tilemap; }
 
 protected:

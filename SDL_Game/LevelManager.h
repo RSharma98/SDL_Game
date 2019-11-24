@@ -2,6 +2,7 @@
 #define LEVELMANAGER_H
 
 #include "Level.h"
+#include "BlackOverlayObject.h"
 
 class LevelManager {
 public:
@@ -14,9 +15,12 @@ public:
 	Tilemap* GetCurrentTilemap() { return levels[currentLevel]->GetTilemap(); }
 
 private:
+	bool incrementLevel;
+	bool resetLevel;
 	int currentLevel = 0;
 	std::vector <Level*> levels;
 	SDL_Renderer* renderer;
+	BlackOverlayObject* blackOverlay;
 };
 
 #endif
