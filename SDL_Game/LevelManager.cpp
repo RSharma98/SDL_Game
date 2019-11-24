@@ -7,10 +7,9 @@ LevelManager::LevelManager(SDL_Renderer *renderer) {
 	blackOverlay = new BlackOverlayObject();
 	blackOverlay->Initialise(renderer, 640, 0, 640, 640);
 	this->renderer = renderer;
-	levels = std::vector<Level*>();
+	levels.push_back(new Level(renderer, 0));
 	levels.push_back(new Level(renderer, 1));
 	levels.push_back(new Level(renderer, 2));
-	levels.push_back(new Level(renderer, 3));
 }
 
 LevelManager::~LevelManager() {
@@ -23,6 +22,7 @@ void LevelManager::Update() {
 	std::cout << "Current Level: " << currentLevel << '\n';
 
 	if (levels[currentLevel]->GetResetLevel()) resetLevel = true;
+	if (levels[currentLevel]->GetCompletedLevel()) incrementLevel = true;
 
 	if (incrementLevel ^ resetLevel) {
 		if (!blackOverlay->IsBringingIn() && !blackOverlay->CompletedBringIn()) blackOverlay->BringIn();

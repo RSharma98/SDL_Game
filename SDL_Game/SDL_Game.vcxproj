@@ -141,6 +141,7 @@
     <ClCompile Include="CoinObject.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GoldenEggObject.cpp" />
     <ClCompile Include="LavaObject.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelManager.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="CoinObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GoldenEggObject.h" />
     <ClInclude Include="LavaObject.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelManager.h" />

@@ -16,6 +16,7 @@ Tilemap::Tilemap(SDL_Renderer *renderer) {
 	scale = 0;
 	this->renderer = renderer;
 	playerCanMove = false;
+	resetLevel = completedLevel = false;
 	//Load(lvl);
 }
 
@@ -71,35 +72,24 @@ void Tilemap::Load(int arr[10][10]) {
 				lavas.push_back(lava); }
 				break;
 			case 3: {
-				SpikeObject* spike = new SpikeObject(0);
+				SpikeObject* spike = new SpikeObject();
 				spike->Initialise(renderer, posX, posY, scale, scale);
 				spikes.push_back(spike); }
 				break;
 			case 4: {
-				SpikeObject* spike = new SpikeObject(1);
-				spike->Initialise(renderer, posX, posY, scale, scale);
-				spikes.push_back(spike); }
-				break;
-			case 5: {
-				SpikeObject* spike = new SpikeObject(2);
-				spike->Initialise(renderer, posX, posY, scale, scale);
-				spikes.push_back(spike); }
-				break;
-			case 6: {
-				SpikeObject* spike = new SpikeObject(3);
-				spike->Initialise(renderer, posX, posY, scale, scale);
-				spikes.push_back(spike); }
-				break;
-			case 7: {
 				CoinObject* coin = new CoinObject();
 				coin->Initialise(renderer, posX, posY, scale, scale);
 				coins.push_back(coin); }
 				break;
-			case 8: {
+			case 5: {
 				player = new PlayerObject();
 				player->Initialise(renderer, posX, posY, scale, scale);
 				playerPosX = posX;
 				playerPosY = posY; }
+				break;
+			case 6:
+				goldenEgg = new GoldenEggObject();
+				goldenEgg ->Initialise(renderer, posX, posY, scale, scale);
 				break;
 			default:
 				break;
@@ -115,6 +105,12 @@ void Tilemap::Update() {
 		playerCanMove = true;
 	} else {
 		timeElapsed += Time::GetDeltaTime();
+	}
+
+	if (player->GetPosX() == goldenEgg->GetPosX() && player->GetPosY() == goldenEgg->GetPosY()) {
+		completedLevel = true;
+		playerCanMove = false;
+		goldenEgg ->Hide();
 	}
 
 	//If the player steps on an obstacle, enable the sprite (this will be changed to cause damage later)
@@ -173,7 +169,8 @@ void Tilemap::Render() {
 		lavas[i]->Render(renderer);
 	}
 
-	player->Render(renderer);
+	if(goldenEgg != NULL) goldenEgg->Render(renderer);
+	if(player != NULL) player->Render(renderer);
 }
 
 void Tilemap::HideObstacles() {

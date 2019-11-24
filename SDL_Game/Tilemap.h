@@ -13,6 +13,7 @@
 #include "SpikeObject.h"
 #include "BackgroundObject.h"
 #include "PlayerObject.h"
+#include "GoldenEggObject.h"
 #include "Time.h"
 
 class Tilemap
@@ -29,6 +30,7 @@ public:
 	void MovePlayerHorizontal(int dir);
 	PlayerObject* GetPlayer() { return player; }
 	bool GetResetLevel() { return resetLevel; }
+	bool GetCompletedLevel() { return completedLevel; }
 
 private:
 	std::vector<BackgroundObject*> backgrounds;
@@ -37,6 +39,7 @@ private:
 	std::vector<LavaObject*> lavas;
 	std::vector<SpikeObject*> spikes;
 	PlayerObject* player;
+	GoldenEggObject* goldenEgg;
 	int playerPosX, playerPosY;
 
 	int level[16][16];
@@ -49,6 +52,7 @@ private:
 	Bounds bounds;
 
 	bool resetLevel;
+	bool completedLevel;
 	bool playerCanMove;
 
 	//TODO: make this class generate the player and enemies

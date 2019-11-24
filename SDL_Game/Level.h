@@ -13,10 +13,12 @@ public:
 	void Reset();
 	Tilemap* GetTilemap() { return tilemap; }
 	bool GetResetLevel() { return resetLevel; }
+	bool GetCompletedLevel() { return completedLevel; }
 
 protected:
 	Tilemap* tilemap;
 	SDL_Renderer* renderer;
 	bool resetLevel;
+	bool completedLevel;
 };
 #endif // !LEVEL_H
