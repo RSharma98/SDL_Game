@@ -12,9 +12,11 @@ public:
 	void Load(int levelNumber);
 	void Reset();
 	Tilemap* GetTilemap() { return tilemap; }
+	bool GetResetLevel() { return resetLevel; }
 
 protected:
 	Tilemap* tilemap;
 	SDL_Renderer* renderer;
+	bool resetLevel;
 };
 #endif // !LEVEL_H

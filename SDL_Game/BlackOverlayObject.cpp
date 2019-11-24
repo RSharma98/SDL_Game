@@ -29,13 +29,13 @@ void BlackOverlayObject::Update() {
 		}
 	}
 	if (bringOut) {
-		if(posX > -640){
-			posX -= 640 * Time::GetDeltaTime();
+		if(posX < 640){
+			posX += 640 * Time::GetDeltaTime();
 		}
 		else {
 			completedBringOut = true;
 			bringOut = false;
-			posX = -640;
+			posX = 640;
 		}
 	}
 	GameObject::Update();

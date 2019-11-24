@@ -15,6 +15,7 @@ int lvl[10][10] = {
 Tilemap::Tilemap(SDL_Renderer *renderer) {
 	scale = 0;
 	this->renderer = renderer;
+	playerCanMove = false;
 	//Load(lvl);
 }
 
@@ -111,6 +112,7 @@ void Tilemap::Load(int arr[10][10]) {
 void Tilemap::Update() {
 	if (timeElapsed >= 3.0) {
 		HideObstacles();
+		playerCanMove = true;
 	} else {
 		timeElapsed += Time::GetDeltaTime();
 	}
@@ -119,26 +121,34 @@ void Tilemap::Update() {
 	for (int i = 0; i < spikes.size(); i++) {
 		if (player->GetPosX() == spikes[i]->GetPosX() && player->GetPosY() == spikes[i]->GetPosY()) {
 			spikes[i]->MakeVisible();
+			resetLevel = true;
+			playerCanMove = false;
 		}
 	}
 
 	for (int i = 0; i < lavas.size(); i++) {
 		if (player->GetPosX() == lavas[i]->GetPosX() && player->GetPosY() == lavas[i]->GetPosY()) {
 			lavas[i]->MakeVisible();
+			resetLevel = true;
+			playerCanMove = false;
 		}
 	}
 }
 
 //These two functions only move the player if there is not a wall ahead in the direction they are moving
 void Tilemap::MovePlayerHorizontal(int dir) {
-	if ((player->GetPosX() <= bounds.right - scale && dir == 1) || (player->GetPosX() >= bounds.left + scale && dir == -1)) {
-		player->MoveHorizontal(dir);
+	if (playerCanMove) {
+		if ((player->GetPosX() <= bounds.right - scale && dir == 1) || (player->GetPosX() >= bounds.left + scale && dir == -1)) {
+			player->MoveHorizontal(dir);
+		}
 	}
 }
 
 void Tilemap::MovePlayerVertical(int dir) {
-	if ((player->GetPosY() >= bounds.top + scale && dir == 1) || (player->GetPosY() <= bounds.bottom - scale && dir == -1)) {
-		player->MoveVertical(dir);
+	if (playerCanMove) {
+		if ((player->GetPosY() >= bounds.top + scale && dir == 1) || (player->GetPosY() <= bounds.bottom - scale && dir == -1)) {
+			player->MoveVertical(dir);
+		}
 	}
 }
 
@@ -177,6 +187,7 @@ void Tilemap::HideObstacles() {
 }
 
 void Tilemap::Reset() {
+	playerCanMove = false;
 	timeElapsed = 0;
 
 	for (int i = 0; i < spikes.size(); i++) {
@@ -190,4 +201,6 @@ void Tilemap::Reset() {
 	player->SetPosX(playerPosX);
 	player->SetPosY(playerPosY);
 	player->Update();
+
+	resetLevel = false;
 }

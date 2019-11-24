@@ -47,6 +47,7 @@ Level::~Level(){
 
 void Level::Update() {
 	tilemap->Update();
+	resetLevel = tilemap->GetResetLevel();
 }
 
 void Level::Render() {

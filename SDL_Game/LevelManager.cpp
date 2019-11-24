@@ -22,6 +22,8 @@ void LevelManager::Update() {
 	blackOverlay->Update();
 	std::cout << "Current Level: " << currentLevel << '\n';
 
+	if (levels[currentLevel]->GetResetLevel()) resetLevel = true;
+
 	if (incrementLevel ^ resetLevel) {
 		if (!blackOverlay->IsBringingIn() && !blackOverlay->CompletedBringIn()) blackOverlay->BringIn();
 		if (blackOverlay->CompletedBringIn() && !blackOverlay->IsBringingOut()) {
@@ -39,10 +41,9 @@ void LevelManager::Render() {
 }
 
 void LevelManager::IncrementLevel() {
-	resetLevel = true;
-	/*if (currentLevel < levels.size() - 1) {
+	if (currentLevel < levels.size() - 1) {
 		currentLevel++;
-	}*/
+	}
 }
 
 void LevelManager::ResetLevel() {

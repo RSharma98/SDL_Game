@@ -27,9 +27,8 @@ public:
 	void HideObstacles();
 	void MovePlayerVertical(int dir);
 	void MovePlayerHorizontal(int dir);
-	PlayerObject* GetPlayer() {
-		return player;
-	}
+	PlayerObject* GetPlayer() { return player; }
+	bool GetResetLevel() { return resetLevel; }
 
 private:
 	std::vector<BackgroundObject*> backgrounds;
@@ -48,6 +47,9 @@ private:
 
 	struct Bounds { float left, right, top, bottom; };
 	Bounds bounds;
+
+	bool resetLevel;
+	bool playerCanMove;
 
 	//TODO: make this class generate the player and enemies
 	bool addedPlayer = false;
