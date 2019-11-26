@@ -32,37 +32,44 @@ void Tilemap::Load(int arr[10][10]) {
 			float posY = i * 64;
 			scale = 64;
 
-			if (arr[i][j] != 0) {
-				TileObject* tile = new TileObject();
-				TileObject::TileType tileType;
-				//TODO: Add code to TileObject to determine type of tile (i.e top/bottom/left/right wall or regular tile
-				if ((i > 0 && arr[i - 1][j] == 0)) {
-					if (arr[i][j + 1] == 0) tileType = TileObject::TileType::TopRight;
-					else if (arr[i][j - 1] == 0) tileType = TileObject::TileType::TopLeft;
+			if (arr[i][j] == 0) {
+				if (i > 0 && arr[i][j] == 0 && arr[i - 1][j] != 0) {
+					CreateTile(posX, posY, scale, TileObject::TileType::Bottom);
+					bounds.bottom = (i - 1) * scale;
+				}
+				else if (i < 9 && arr[i][j] == 0 && arr[i + 1][j] != 0) {
+					CreateTile(posX, posY, scale, TileObject::TileType::Top);
+					bounds.top = (i + 1) * scale;
+				}
+				else {
+					if (j < 5) {
+						if (arr[i][j + 1] == 0 && arr[i + 1][j + 1] && i < 5) {
+							CreateTile(posX, posY, scale, TileObject::TileType::TopLeft);
+						}
+						else if (arr[i][j + 1] == 0 && arr[i - 1][j + 1] && i > 5) {
+							CreateTile(posX, posY, scale, TileObject::TileType::BottomLeft);
+						}
+						else if (arr[i][j + 1] != 0) {
+							CreateTile(posX, posY, scale, TileObject::TileType::Left);
+							bounds.left = (j + 1) * scale;
+						}
+					}
 					else {
-						tileType = TileObject::TileType::Top;
-						bounds.top = (i + 1) * scale;
-					} 
+						if (arr[i][j - 1] == 0 && arr[i + 1][j - 1] && i < 5) {
+							CreateTile(posX, posY, scale, TileObject::TileType::TopRight);
+						}
+						else if (arr[i][j - 1] == 0 && arr[i - 1][j - 1] && i > 5) {
+							CreateTile(posX, posY, scale, TileObject::TileType::BottomRight);
+						}
+						else if (arr[i][j - 1] != 0) {
+							CreateTile(posX, posY, scale, TileObject::TileType::Right);
+							bounds.right = (j - 1) * scale;
+						}
+					}
 				}
-				else if ((i < 9 && arr[i + 1][j] == 0)) {
-					if (arr[i][j + 1] == 0) tileType = TileObject::TileType::BottomRight;
-					else if (arr[i][j - 1] == 0) tileType = TileObject::TileType::BottomLeft;
-					else {
-						tileType = TileObject::TileType::Bottom;
-						bounds.bottom = (i - 1) * scale;
-					} 
-				}
-				else if (j > 0 && arr[i][j - 1] == 0) {
-					tileType = TileObject::TileType::Left;
-					bounds.left = (j + 1) * scale;
-				}
-				else if (j < 9 && arr[i][j + 1] == 0) {
-					tileType = TileObject::TileType::Right;
-					bounds.right = (j - 1) * scale;
-				} 
-				else tileType = TileObject::TileType::Normal;
-				tile->Initialise(renderer, posX, posY, scale, scale, tileType);
-				tiles.push_back(tile);
+			}
+			else {
+				CreateTile(posX, posY, scale, TileObject::TileType::Normal);
 			}
 
 			switch (arr[i][j]) {
@@ -97,6 +104,12 @@ void Tilemap::Load(int arr[10][10]) {
 		}
 	}
 	timeElapsed = 0;
+}
+
+void Tilemap::CreateTile(int posX, int posY, int scale, TileObject::TileType tileType) {
+	TileObject* tile = new TileObject();
+	tile->Initialise(renderer, posX, posY, scale, scale, tileType);
+	tiles.push_back(tile);
 }
 
 void Tilemap::Update() {

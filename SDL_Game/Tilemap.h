@@ -33,6 +33,7 @@ public:
 	bool GetCompletedLevel() { return completedLevel; }
 
 private:
+	void CreateTile(int posX, int posY, int scale, TileObject::TileType tileType);
 	std::vector<BackgroundObject*> backgrounds;
 	std::vector<TileObject*> tiles;
 	std::vector<CoinObject*> coins;
