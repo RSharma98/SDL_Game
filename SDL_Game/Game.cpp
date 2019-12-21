@@ -25,6 +25,10 @@ void Game::Initialise(const char* title, int xPos, int yPos, int width, int heig
 	//level = new Level(renderer);
 	isMainMenu = true;
 	levelManager = new LevelManager(renderer);
+	mainMenuBackground = new SpriteRenderer();
+	SDL_Rect menuSource { 0, 0, 640, 640 };
+	SDL_Rect menuDest { 0, 0, 640, 640};
+	mainMenuBackground->Initialise("Assets/Background.png", renderer, menuSource, menuDest);
 }
 
 void Game::Update() {
@@ -97,6 +101,8 @@ void Game::Render() {
 	//level->Render();
 	if (isMainMenu) {
 		//Render main menu
+		SDL_Rect menuDest { 0, 0, 640, 640 };
+		mainMenuBackground->Render(renderer, menuDest);
 	}
 	else {
 		//Render the level manager

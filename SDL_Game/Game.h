@@ -11,6 +11,7 @@
 #include "Tilemap.h"
 #include "Level.h"
 #include "LevelManager.h"
+#include "SpriteRenderer.h"
 
 class Game {
 public:
@@ -33,6 +34,7 @@ private:
 	Level* level;
 	Tilemap* tilemap;
 	LevelManager* levelManager;
+	SpriteRenderer* mainMenuBackground;
 };
 
 #endif // ! GAME_H
