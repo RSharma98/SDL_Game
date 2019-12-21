@@ -26,6 +26,7 @@ public:
 
 private:
 	bool isRunning = false;
+	bool isMainMenu = true;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 

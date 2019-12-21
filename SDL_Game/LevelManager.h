@@ -12,11 +12,14 @@ public:
 	void Render();
 	void IncrementLevel();
 	void ResetLevel();
+	void ResetGame();
 	Tilemap* GetCurrentTilemap() { return levels[currentLevel]->GetTilemap(); }
+	bool GetCompletedLevel() { return completedGame; }
 
 private:
 	bool incrementLevel;
 	bool resetLevel;
+	bool completedGame;
 	int currentLevel = 0;
 	std::vector <Level*> levels;
 	SDL_Renderer* renderer;

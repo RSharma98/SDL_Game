@@ -212,5 +212,8 @@ void Tilemap::Reset() {
 	player->SetPosY(playerPosY);
 	player->Update();
 
+	goldenEgg->MakeVisible();
+
 	resetLevel = false;
+	completedLevel = false;
 }
