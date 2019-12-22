@@ -1,5 +1,6 @@
 #include "Level.h"
 
+//Arrays for every level
 	int levelArr1[10][10] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -140,6 +141,7 @@ void Level::Render() {
 	tilemap->Render();
 }
 
+//This function loads the level based on provided number
 void Level::Load(int levelNumber) {
 	switch (levelNumber) {
 	case 0:

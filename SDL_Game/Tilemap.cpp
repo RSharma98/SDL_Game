@@ -24,6 +24,7 @@ Tilemap::~Tilemap() {
 	
 }
 
+//This function loads an array and instantiates the correct game object based on a number provided
 void Tilemap::Load(int arr[10][10]) {
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
@@ -106,6 +107,7 @@ void Tilemap::Load(int arr[10][10]) {
 	timeElapsed = 0;
 }
 
+//Function to create a specific tile
 void Tilemap::CreateTile(int posX, int posY, int scale, TileObject::TileType tileType) {
 	TileObject* tile = new TileObject();
 	tile->Initialise(renderer, posX, posY, scale, scale, tileType);
@@ -113,6 +115,7 @@ void Tilemap::CreateTile(int posX, int posY, int scale, TileObject::TileType til
 }
 
 void Tilemap::Update() {
+	//After 3 seconds hide the obstacles
 	if (timeElapsed >= 3.0) {
 		HideObstacles();
 		playerCanMove = true;
@@ -120,6 +123,7 @@ void Tilemap::Update() {
 		timeElapsed += Time::GetDeltaTime();
 	}
 
+	//If the player reaches the golden egg mark this level as complete
 	if (player->GetPosX() == goldenEgg->GetPosX() && player->GetPosY() == goldenEgg->GetPosY()) {
 		completedLevel = true;
 		playerCanMove = false;
@@ -192,6 +196,7 @@ void Tilemap::HideObstacles() {
 	}
 }
 
+//This function resets all variables for when the player dies
 void Tilemap::Reset() {
 	playerCanMove = false;
 	timeElapsed = 0;

@@ -7,6 +7,7 @@ LevelManager::LevelManager(SDL_Renderer *renderer) {
 	blackOverlay = new BlackOverlayObject();
 	blackOverlay->Initialise(renderer, 640, 0, 640, 640);
 	this->renderer = renderer;
+	//Add all levels to the list
 	levels.push_back(new Level(renderer, 0));
 	levels.push_back(new Level(renderer, 1));
 	levels.push_back(new Level(renderer, 2));
@@ -24,12 +25,15 @@ LevelManager::~LevelManager() {
 }
 
 void LevelManager::Update() {
+	//Update the current level and black overlay sprite
 	levels[currentLevel]->Update();
 	blackOverlay->Update();
 
+	//Find out if the player has died or completed the level
 	if (levels[currentLevel]->GetResetLevel()) resetLevel = true;
 	if (levels[currentLevel]->GetCompletedLevel()) incrementLevel = true;
 
+	//If the level needs to be incremented or reset, use the black overlay sprite as a transition
 	if (incrementLevel ^ resetLevel) {
 		if (!blackOverlay->IsBringingIn() && !blackOverlay->CompletedBringIn()) blackOverlay->BringIn();
 		if (blackOverlay->CompletedBringIn() && !blackOverlay->IsBringingOut()) {
@@ -42,6 +46,7 @@ void LevelManager::Update() {
 }
 
 void LevelManager::Render() {
+	//Render the current level and black overlay sprite
 	levels[currentLevel]->Render();
 	blackOverlay->Render(renderer);
 }
@@ -55,10 +60,12 @@ void LevelManager::IncrementLevel() {
 	}
 }
 
+//This function resets the current level
 void LevelManager::ResetLevel() {
 	levels[currentLevel]->Reset();
 }
 
+//This function resets all levels
 void LevelManager::ResetGame(){
 	currentLevel = 0;
 	completedGame = false;
