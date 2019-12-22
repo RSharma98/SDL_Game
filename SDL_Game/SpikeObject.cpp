@@ -11,7 +11,7 @@ SpikeObject::~SpikeObject() {
 
 //Initialise the spike based on the angle
 void SpikeObject::Initialise(SDL_Renderer* renderer, float posX, float posY, float scaleX, float scaleY) {
-	spritePath = "Assets/Sprites/Dungeon Platformer Tileset/tileset.png";
-	sourceRect = SDL_Rect{ 32, 96, 16, 16 };
+	spritePath = "Assets/Sprites/Spikes.png";
+	sourceRect = SDL_Rect{ 0, 0, 16, 16 };
 	GameObject::Initialise(renderer, posX, posY, scaleX, scaleY);
 }
