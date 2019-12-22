@@ -1,1 +1,0 @@
-This asset pack was downloaded from https://pixel-poem.itch.io/dungeon-assetpuck and was made by user pixel-poem. It is authorised for commercial and non-commercial use.

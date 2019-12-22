@@ -136,7 +136,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BackgroundObject.cpp" />
     <ClCompile Include="BlackOverlayObject.cpp" />
     <ClCompile Include="CoinObject.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -154,7 +153,6 @@
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BackgroundObject.h" />
     <ClInclude Include="BlackOverlayObject.h" />
     <ClInclude Include="CoinObject.h" />
     <ClInclude Include="Game.h" />

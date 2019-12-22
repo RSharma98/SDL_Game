@@ -162,10 +162,6 @@ void Tilemap::MovePlayerVertical(int dir) {
 }
 
 void Tilemap::Render() {
-	for (int i = 0; i < backgrounds.size(); i++) {
-		backgrounds[i]->Render(renderer);
-	}
-
 	for (int i = 0; i < tiles.size(); i++) {
 		tiles[i]->Render(renderer);
 	}

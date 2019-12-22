@@ -11,7 +11,6 @@
 #include "TileObject.h"
 #include "CoinObject.h"
 #include "SpikeObject.h"
-#include "BackgroundObject.h"
 #include "PlayerObject.h"
 #include "GoldenEggObject.h"
 #include "Time.h"
@@ -34,7 +33,6 @@ public:
 
 private:
 	void CreateTile(int posX, int posY, int scale, TileObject::TileType tileType);
-	std::vector<BackgroundObject*> backgrounds;
 	std::vector<TileObject*> tiles;
 	std::vector<CoinObject*> coins;
 	std::vector<LavaObject*> lavas;

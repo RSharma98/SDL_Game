@@ -1,0 +1,1 @@
+The tileset used for the tiles in the game was obtained from https://pixel-poem.itch.io/dungeon-assetpuck and is permitted for personal and commercial usage. All other art featured in the game was designed by me
